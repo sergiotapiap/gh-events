@@ -3,7 +3,18 @@ on:
   pull_request:
     types:
       - opened
+    branches:
+      - master # matches only master branch
+      - dev-* # matches dev-anything-here
+      - feat/** # matches feat/anything/here
   workflow_dispatch:
+  push:
+    branches:
+      - master
+      - 'dev-*'
+      - 'feat/**'
+    paths-ignore:
+      - '.github/workflows/*'
 jobs:
   build:
     runs-on: ubuntu-latest
